@@ -22,6 +22,15 @@ def index():
 
 @app.route('/training-data')
 def trainingData():
+    totalDataKelas=[]
+    path_dindi = r'static\dataset\Dendrobium_Dindii'
+
+    for path in os.listdir(path_dindi):
+        # check if current path is a file
+        if os.path.isfile(os.path.join(path_dindi, path)):
+            totalDataKelas['dindii'] += 1
+            
+    print(totalDataKelas['dindii'])
     dr = {'BASE_URL': BASE_URL}
     return render_template('training-data.html', dRes=dr)
 
