@@ -1,1 +1,37 @@
 {% extends "layout.html" %}
+
+{% block contents %}
+<div class="container" style="margin-top: 30px;">
+    <h4>Dataset bunga</h4>
+    <div>
+        <a href="{{ BASE_URL }}/cara-tambahkan-dataset" class="btn btn-primary">Cara menambahkan dataset bunga</a>
+    </div>
+    <div class="row" style="margin-top: 30px;">
+        <table class="table table-bordered" id="tblDataBunga" style="font-size: 13px;">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Folder/file</th>
+                    <th>Gambar</th>
+                    <th>Kelas</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dindii in fileDindii %}
+                <tr>
+                    <td>{{ dindii.ord }}</td>
+                    <td>{{ dindii.filename }}</td>
+                    <td>
+                        <img src="{{ url_for('static', filename=dindii.filename) }}" style="width: 200px;">
+                    </td>
+                    <td>{{ dindii.class }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>  
+<script>
+    $("#tblDataBunga").dataTable();
+</script>
+{% endblock contents %}

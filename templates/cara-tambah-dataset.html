@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block contents %}
+<div class="container" style="margin-top: 30px;">
+    <div style="text-align: center;">
+        <img src="https://nos.jkt-1.neo.id/aditiastorage/asset/ilustrasi/Information-tab-bro.png" style="width: 400px;">
+    </div>
+    <h4>Cara menambahkan dataset bunga</h4>
+    <div class="row">
+        <p>
+            <ul>
+                <li>Siapkan file bunga anggrek, <b>pastikan telah mengetahui kelas dari jenis bunga tersebut</b></li>
+                <li>Copy/pindahkan file bunga yang akan menjadi dataset baru ke folder "static/dataset/<b>Nama_Kelas</b>/", pastikan folder nama kelas/jenis bunga telah sesuai dengan dataset yang dipindahkan</li>
+                <li>Lakukan training ulang pada aplikasi</li>
+            </ul>
+        </p>
+        <a href="{{ BASE_URL }}/dataset" class="btn btn-primary">Kembali ke dataset bunga</a>
+    </div>
+</div>
+{% endblock contents %}
