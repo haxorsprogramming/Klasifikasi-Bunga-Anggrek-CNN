@@ -1,37 +1,21 @@
 {% extends "layout.html" %}
 
 {% block contents %}
-<div class="container" style="margin-top: 30px;">
-    <h4>Dataset bunga</h4>
-    <div>
-        <a href="{{ BASE_URL }}/cara-tambahkan-dataset" class="btn btn-primary">Cara menambahkan dataset bunga</a>
+<div class="container">
+    <div style="text-align: center;">
+        <img src="https://nos.jkt-1.neo.id/aditiastorage/asset/ilustrasi/Work-time-pana.png" style="width:500px;">
+        <h3>Training dataset</h3>
+        <p>Proses training data diperlukan untuk membuat model CNN, model ini nantinya akan dipakai untuk melakukan klasifikasi jenis bunga pada data uji yang baru. 
+            Dataset tersimpan di folder <code>static/dataset</code>. Sebelum melakukan proses training, pastikan dataset telah sesuai dengan label/kelas. Sebelum melakukan testing,
+            harap pastikan apakah pengecekan terhadap dataset dibawah telah sesuai. 
+        </p>
+        <p>
+            Jika pengecekan dataset dibawah ini telah sesuai, maka proses training data dapat dilakukan, waktu proses training data akan dipengaruhi oleh beberapa hal berikut :
+            <b>total kelas, total dataset, spek laptop/pc, & total epoch</b>, khusus untuk epoch akan ditentukan secara konstanta, nilai ini dapat diubah melalui kode program.
+            
+        </p>
+
     </div>
-    <div class="row" style="margin-top: 30px;">
-        <table class="table table-bordered" id="tblDataBunga" style="font-size: 13px;">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Folder/file</th>
-                    <th>Gambar</th>
-                    <th>Kelas</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for dindii in fileDindii %}
-                <tr>
-                    <td>{{ dindii.ord }}</td>
-                    <td>{{ dindii.filename }}</td>
-                    <td>
-                        <img src="{{ url_for('static', filename=dindii.filename) }}" style="width: 200px;">
-                    </td>
-                    <td>{{ dindii.class }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</div>  
-<script>
-    $("#tblDataBunga").dataTable();
-</script>
+</div>
+
 {% endblock contents %}

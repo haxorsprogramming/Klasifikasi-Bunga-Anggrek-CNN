@@ -16,13 +16,15 @@ anggrek_class = ["Dendrobium_Dindii", "Dendrobium_Startiotes", "Dendrobium_Tauri
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+# route index
 @app.route('/')
 def index():
     dr = {'BASE_URL': BASE_URL}
     return render_template('home.html', dRes=dr)
 
+# route dataset 
 @app.route('/dataset')
-def trainingData():
+def dataset():
     tFile = {
         'dindii' : 0,
         'startiotes' : 0,
@@ -73,11 +75,18 @@ def trainingData():
     tFile['taurinum'] = len(all_file_taurinum)
 
     dr = {'BASE_URL': BASE_URL}
-    return render_template('training-data.html', dRes=dr, fileDindii=fData)
+    return render_template('dataset.html', dRes=dr, fileDindii=fData)
 
+# route cara tambahkan dataset 
 @app.route('/cara-tambahkan-dataset')
 def caraTambahkanDataset():
     return render_template('cara-tambah-dataset.html')
 
+# route training data 
+@app.route('/training-data')
+def trainingData():
+    return render_template('training-data.html')
+
+# jalankan server 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
