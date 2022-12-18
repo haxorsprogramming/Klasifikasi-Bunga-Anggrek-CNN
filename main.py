@@ -9,7 +9,7 @@ import json
 import random
 
 UPLOAD_FOLDER = 'data_upload'
-BASE_URL = "http://127.0.0.1:5000/"
+BASE_URL = os.getenv('SERVER_URL')
 
 anggrek_class = ["Dendrobium_Dindii", "Dendrobium_Startiotes", "Dendrobium_Taurinum"]
 
@@ -19,8 +19,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # route index
 @app.route('/')
 def index():
-    dr = {'BASE_URL': BASE_URL}
-    return render_template('home.html', dRes=dr)
+    return render_template('home.html', mData=BASE_URL)
 
 # route dataset 
 @app.route('/dataset')
