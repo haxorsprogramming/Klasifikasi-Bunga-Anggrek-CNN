@@ -29,9 +29,9 @@ def dataset():
         'startiotes' : 0,
         'taurinum' : 0
     }
-    path_dindi = r'static\dataset\Dendrobium_Dindii'
-    path_startiotes = r'static\dataset\Dendrobium_Startiotes'
-    path_taurinum = r'static\dataset\Dendrobium_Taurinum'
+    path_dindi = r'static/dataset/Dendrobium_Dindii'
+    path_startiotes = r'static/dataset/Dendrobium_Startiotes'
+    path_taurinum = r'static/dataset/Dendrobium_Taurinum'
 
     all_file_dindii = os.listdir(path_dindi)
     all_file_startioes = os.listdir(path_startiotes)
