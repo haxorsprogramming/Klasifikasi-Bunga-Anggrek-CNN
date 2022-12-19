@@ -19,7 +19,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # route index
 @app.route('/')
 def index():
-    return render_template('home.html', mData=BASE_URL)
+    return render_template('home.html', dr=BASE_URL)
 
 # route dataset 
 @app.route('/dataset')
@@ -73,18 +73,17 @@ def dataset():
     tFile['startiotes'] = len(all_file_startioes)
     tFile['taurinum'] = len(all_file_taurinum)
 
-    dr = {'BASE_URL': BASE_URL}
-    return render_template('dataset.html', dRes=dr, fileDindii=fData)
+    return render_template('dataset.html', mData=BASE_URL, fileDindii=fData)
 
 # route cara tambahkan dataset 
 @app.route('/cara-tambahkan-dataset')
 def caraTambahkanDataset():
-    return render_template('cara-tambah-dataset.html')
+    return render_template('cara-tambah-dataset.html', mData=BASE_URL)
 
 # route training data 
 @app.route('/training-data')
 def trainingData():
-    return render_template('training-data.html')
+    return render_template('training-data.html', mData=BASE_URL)
 
 # jalankan server 
 if __name__ == '__main__':

@@ -13,8 +13,12 @@
             Jika pengecekan dataset dibawah ini telah sesuai, maka proses training data dapat dilakukan, waktu proses training data akan dipengaruhi oleh beberapa hal berikut :
             <b>total kelas, total dataset, spek laptop/pc, & total epoch</b>, khusus untuk epoch akan ditentukan secara konstanta, nilai ini dapat diubah melalui kode program.
         </p>
+        <hr/>
         <div style="text-align: center;" id="divBtnDataset">
-            <a href="javascript:void(0)" class="btn btn-success" onclick="cekDatasetAtc()">Cek dataset</a>
+            <a href="javascript:void(0)" class="btn btn-success" id="btnCekDataset" onclick="cekDatasetAtc()">Cek dataset</a>
+        </div>
+        <div style="text-align: center;" id="divHasilPengecekan">
+            <h5 id="capHasilPengecekan"></h5>
         </div>
 
     </div>
@@ -22,9 +26,15 @@
 
 <script>
 
+    var urlCekDataset = "{{ BASE_URL }}/proses-cek-dataset";
+
     function cekDatasetAtc()
     {
-        
+        $("#btnCekDataset").hide();
+        document.querySelector("#divBtnDataset").innerHTML = "<h5>Melakukan pengecekan dataset ....</h5>";
+        setTimeout(function(){
+            
+        }, 3000);
     }
 
 </script>
