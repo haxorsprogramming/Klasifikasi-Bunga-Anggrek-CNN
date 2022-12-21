@@ -80,6 +80,10 @@
 
         $.post(urlProsesTraining, function(data){
             console.log(data);
+            pesanUmumApp("success", "Finish", "Proses training selesai, model telah disimpan ..., akan di alihkan ke halaman hasil training dalam 3 detik, harap menunggu ... ");
+            setTimeout(function(){
+                window.location.assign("{{ BASE_URL }}/hasil-training/"+data['kdPengujian'])
+            }, 3000);
         });
 
     }

@@ -4,18 +4,12 @@ from operasiFile import hitungTotalFile
 
 import pandas as pd
 import numpy as np
-import uuid
+
 import os
-import json
-import random
-import pathlib
-import tensorflow as tf
-import matplotlib.pyplot as plt
-from tensorflow import keras
-from tensorflow.keras import layers
-from tensorflow.keras.models import Sequential
+import uuid
 
 import cekDataset as cd
+import systemTraining as st
 
 UPLOAD_FOLDER = 'data_upload'
 BASE_URL = os.getenv('SERVER_URL')
@@ -24,10 +18,6 @@ anggrek_class = ["Dendrobium_Dindii", "Dendrobium_Startiotes", "Dendrobium_Tauri
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-# section untuk training data 
-data_model = "static/model"
-dataset_dir = "static/dataset"
 
 # route index
 @app.route('/')
@@ -58,9 +48,18 @@ def prosesCekDataset():
 
 @app.route('/proses-training-data', methods=('GET','POST'))
 def prosesTrainingData():
-
-    dr = {'status' : 'success'}
+    kdPengujian = uuid.uuid4()
+    st.trainingProcess(kdPengujian)
+    dr = {'status' : 'success', 'kdPengujian':kdPengujian}
     return jsonify(dr)
+
+@app.route('/hasil-training/<kdPengujian>')
+def hasilTraining(kdPengujian):
+    return render_template('hasil-training.html', mData=BASE_URL, kdUji=kdPengujian)
+
+@app.route('/klasifikasi')
+def klasifikasi():
+    return render_template('klasifikasi.html', mData=BASE_URL)
 
 # jalankan server 
 if __name__ == '__main__':

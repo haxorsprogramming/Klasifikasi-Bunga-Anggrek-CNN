@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block contents %}
+
+<div class="container">
+    <div style="text-align: center;">
+        <img src="https://nos.jkt-1.neo.id/aditiastorage/asset/ilustrasi/Information-tab-bro.png" id="coverTraining" style="width:300px;">
+        <h3 id="capTitle">Hasil training dataset</h3>
+        <hr/>
+        <div style="margin-top: 30px;">
+            <h5>Training & Validasi Phase 1</h5>
+            <img src="{{ url_for("static", filename="file_plot/train_eval/"+kdUji+".png") }}">
+        </div>
+        <hr/>
+        <div style="margin-top: 30px;">
+            <h5>Training & Validasi Phase 2 (Evaluasi)</h5>
+            <img src="{{ url_for("static", filename="file_plot/acc_evaluasi/"+kdUji+".png") }}">
+        </div>
+        <div>
+            Model CNN telah dibuat, selanjutnya dapat digunakan untuk proses klasifikasi bunga melalui data uji<br/>
+            <a href="{{ BASE_URL }}/klasifikasi" class="btn btn-primary btn-lg">Tes klasifikasi/uji bunga</a>
+        </div>
+    </div>
+</div>
+
+{% endblock contents %}
