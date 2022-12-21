@@ -3,38 +3,85 @@
 {% block contents %}
 <div class="container">
     <div style="text-align: center;">
-        <img src="https://nos.jkt-1.neo.id/aditiastorage/asset/ilustrasi/Work-time-pana.png" style="width:500px;">
-        <h3>Training dataset</h3>
-        <p>Proses training data diperlukan untuk membuat model CNN, model ini nantinya akan dipakai untuk melakukan klasifikasi jenis bunga pada data uji yang baru. 
-            Dataset tersimpan di folder <code>static/dataset</code>. Sebelum melakukan proses training, pastikan dataset telah sesuai dengan label/kelas. Sebelum melakukan testing,
-            harap pastikan apakah pengecekan terhadap dataset dibawah telah sesuai. 
-        </p>
-        <p>
-            Jika pengecekan dataset dibawah ini telah sesuai, maka proses training data dapat dilakukan, waktu proses training data akan dipengaruhi oleh beberapa hal berikut :
-            <b>total kelas, total dataset, spek laptop/pc, & total epoch</b>, khusus untuk epoch akan ditentukan secara konstanta, nilai ini dapat diubah melalui kode program.
-        </p>
-        <hr/>
-        <div style="text-align: center;" id="divBtnDataset">
-            <a href="javascript:void(0)" class="btn btn-success" id="btnCekDataset" onclick="cekDatasetAtc()">Cek dataset</a>
-        </div>
-        <div style="text-align: center;" id="divHasilPengecekan">
-            <h5 id="capHasilPengecekan"></h5>
+        <img src="https://nos.jkt-1.neo.id/aditiastorage/asset/ilustrasi/Formula-bro.png" id="coverTraining" style="width:500px;">
+        <h3 id="capTitle">Training dataset</h3>
+
+        <div id="divContentAwal">
+            <p>Proses training data diperlukan untuk membuat model CNN, model ini nantinya akan dipakai untuk melakukan klasifikasi jenis bunga pada data uji yang baru. 
+                        Dataset tersimpan di folder <code>static/dataset</code>. Sebelum melakukan proses training, pastikan dataset telah sesuai dengan label/kelas. Sebelum melakukan testing,
+                        harap pastikan apakah pengecekan terhadap dataset dibawah telah sesuai. 
+                    </p>
+            <p>
+                Jika pengecekan dataset dibawah ini telah sesuai, maka proses training data dapat dilakukan, waktu proses training data akan dipengaruhi oleh beberapa hal berikut :
+                <b>total kelas, total dataset, spek laptop/pc, & total epoch</b>, khusus untuk epoch akan ditentukan secara konstanta, nilai ini dapat diubah melalui kode program.
+            </p>
+            <hr/>
+            <div style="text-align: center;" id="divBtnDataset">
+                <a href="javascript:void(0)" class="btn btn-success" id="btnCekDataset" onclick="cekDatasetAtc()">Cek dataset</a>
+            </div>
+            <div style="text-align: center;" id="divHasilPengecekan">
+                <h5 id="capHasilPengecekan"></h5>
+            </div>
+
+            <div style="text-align: center;" id="divSectionKonfirmasiTraining">
+                <p>Sebelum melakukan proses training, harap periksa kembali apakah dataset yang akan ditraining sudah sesuai, <b>sangat disarankan</b> untuk melakukan penyesuaian
+                data training berdasarkan foto/kelas yang sama, dikarenakan akan berpengaruh ke dalam proses tingkat akurasi yang ada, jika dirasa dataset telah sesuai, maka selanjutnya dapat melakukan
+            proses training</p>
+            <a href="javascript:void(0)" class="btn btn-lg btn-success" id="btnProsesTrainingData" onclick="prosesTrainingDataAtc()">Training Data</a>
+            </div>
         </div>
 
+        <div id="divLoader">
+            <img src="{{ url_for("static", filename="loader.svg") }}" style="width:300px;">
+        </div>
+        
+        
     </div>
 </div>
 
 <script>
 
     var urlCekDataset = "{{ BASE_URL }}/proses-cek-dataset";
+    var urlProsesTraining = "{{ BASE_URL }}/proses-training-data";
+    var linkImgTraining = "https://nos.jkt-1.neo.id/aditiastorage/asset/ilustrasi/Work-time-pana.png";
+
+    $("#divSectionKonfirmasiTraining").hide();
+    $("#divLoader").hide();
 
     function cekDatasetAtc()
     {
         $("#btnCekDataset").hide();
         document.querySelector("#divBtnDataset").innerHTML = "<h5>Melakukan pengecekan dataset ....</h5>";
         setTimeout(function(){
-            
+            $.post(urlCekDataset, function(data){
+                let dataset = data.dataset;
+                let tDindii = dataset.dindii;
+                let tStartiotes = dataset.startiotes;
+                let tTaurinum = dataset.taurinum;
+                let capPengecekan = "Total dataset kelas <b> -> Nindii : "+tDindii+" data, -> Startiotes : "+tStartiotes+" data, -> Taurinum : "+tTaurinum+" data</b>"
+                pesanUmumApp("success", "Finish", "Pengecekan dataset selesai ...");
+                document.querySelector("#divBtnDataset").innerHTML = capPengecekan;
+                $("#divSectionKonfirmasiTraining").show();
+            });
         }, 3000);
+    }
+
+    function prosesTrainingDataAtc()
+    {
+        confirmQuest('info', 'Konfirmasi', 'Mulai training data ...?', function (x) {trainConfirm()});
+    }
+
+    function trainConfirm()
+    {
+        document.getElementById("coverTraining").src = linkImgTraining;
+        document.getElementById("capTitle").innerHTML = "Sedang mentraining dataset ... akan memakan waktu lama ... harap menunggu ...";
+        $("#divContentAwal").hide();
+        $("#divLoader").show();
+
+        $.post(urlProsesTraining, function(data){
+            console.log(data);
+        });
+
     }
 
 </script>
