@@ -7,9 +7,11 @@ import numpy as np
 
 import os
 import uuid
+import base64
 
 import cekDataset as cd
 import systemTraining as st
+import systemTesting as uji
 
 UPLOAD_FOLDER = 'data_upload'
 BASE_URL = os.getenv('SERVER_URL')
@@ -60,6 +62,24 @@ def hasilTraining(kdPengujian):
 @app.route('/klasifikasi')
 def klasifikasi():
     return render_template('klasifikasi.html', mData=BASE_URL)
+
+@app.route('/proses-klasifikasi', methods=('GET','POST'))
+def prosesKlasifikasi():
+    kdPengujian = uuid.uuid4()
+    dataGambar = request.form.get("gambar")
+    format, imgstr = dataGambar.split(";base64,")
+    decoded_img = base64.b64decode((imgstr))
+    img_file = open('static/upload_data_uji/'+str(kdPengujian)+'.png', 'wb')
+    img_file.write(decoded_img)
+    img_file.close()
+
+    hasilKlasifikaasi = uji.testingDataUji(anggrek_class, kdPengujian)
+
+    # kelas = 
+
+    dr = {'status' : 'success', 'hasil' : hasilKlasifikaasi}
+    
+    return jsonify(dr)
 
 # jalankan server 
 if __name__ == '__main__':

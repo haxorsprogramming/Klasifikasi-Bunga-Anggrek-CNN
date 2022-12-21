@@ -4,9 +4,80 @@
 
 <div class="container">
     <div style="text-align: center;">
-        <img src="https://nos.jkt-1.neo.id/aditiastorage/asset/ilustrasi/Information-tab-bro.png" id="coverTraining" style="width:300px;">
         <h3 id="capTitle">Klasifikasi data uji</h3>
         <hr/>
+        <img src="https://nos.jkt-1.neo.id/aditiastorage/asset/ilustrasi/Formula-bro.png" id="filePicPrev" style="text-align: center;width:500px;">
+        <hr/>
+        <div id="divFormUji">
+            <label>Pilih file/gambar data uji</label>
+            <input type="file" class="form-control" id="txtFileFoto" onchange="setImg()">
+            <br/>
+            <br/>
+            <a href="javascript:void(0)" class="btn btn-primary btn-lg" id="btnProsesKlasifikasi" onclick="startKlasifikasiProsesAtc()">Mulai proses klasifikasi</a>
+        </div>
+        <div id="divFormHasil">
+            <h5>Hasil prediksi jenis bunga</h5>
+            <h3 id="capHasilPrediksiJenisBunga"></h3>
+            <br/>
+            <br/>
+            <h5>Nilai confidence (kecocokan)</h5>
+            <h3 id="capHasilConfidence"></h3>
+            <p><b>Info</b> : Apabila hasil confidence dibawah 50 % dan prediksi benar, dan hasil confidence diatas %50 dan prediksi salah ... maka perbaiki atau perbanyak dataset. Lalu lakukan training ulang ..</p>
+            <br/>
+            <br/>
+            <a href="{{ BASE_URL }}/klasifikasi" class="btn btn-primary btn-lg">Tes klasifikasi/uji bunga ulang</a>
+        </div>
 </div>
+
+<script>
+
+    $("#divFormHasil").hide();
+
+    function setImg(){
+        var citraInput = document.querySelector('#txtFileFoto');
+        var preview = document.querySelector('#filePicPrev');
+        var fileGambar = new FileReader();
+        fileGambar.readAsDataURL(citraInput.files[0]);
+        fileGambar.onload = function(e){
+            let hasil = e.target.result;
+            preview.src = hasil;
+        }
+        console.log("image ready to upload");
+    }
+
+    function startKlasifikasiProsesAtc()
+    {
+        let fileAwal = "https://nos.jkt-1.neo.id/aditiastorage/asset/ilustrasi/Formula-bro.png"
+        let gambar = document.getElementById("filePicPrev").getAttribute("src");
+        
+        if(gambar === fileAwal){
+            pesanUmumApp("warning", "Kesalahan", "File uji belum dipilih ... !!!");
+        }else{
+            confirmQuest("info", "Konfirmasi", "Mulai proses klasifikasi? ... ", function (x) {klasifikasiConfirm()});
+        }
+    }
+
+    function klasifikasiConfirm()
+    {
+        
+        let gambar = document.getElementById("filePicPrev").getAttribute("src");
+        let ds = {'gambar':gambar}
+        document.querySelector("#divFormUji").innerHTML = "<h4>Memproses data uji untuk klasifikasi ... </h4>";
+        $("#btnProsesKlasifikasi").hide();
+        setTimeout(function(){
+            $.post("{{ BASE_URL }}/proses-klasifikasi", ds, function(data){
+                pesanUmumApp("success", "Success", "Proses klasifikasi selesai ... !!!");
+                let hasil = data.hasil;
+                let confidence = hasil['confidence'];
+                let kelas = hasil['class'];
+                $("#divFormUji").hide();
+                document.querySelector("#capHasilPrediksiJenisBunga").innerHTML = kelas;
+                document.querySelector("#capHasilConfidence").innerHTML = confidence+" %";
+                $("#divFormHasil").show();
+            });
+        }, 3000); 
+        
+    }
+</script>
 
 {% endblock contents %}
