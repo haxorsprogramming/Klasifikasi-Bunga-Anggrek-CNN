@@ -6,6 +6,6 @@
   
   <code>Developer : Nurhalimah </code>
   
-## Perbandingan-metode-PLSI-Deep-Neural-Network
+## Klasifikasi Bunga Anggrek CNN
   
 </div>
