@@ -18,7 +18,7 @@ batch_size = 32
 size = 180
 
 def trainingProcess(kdPengujian):
-    print("training start")
+    print(" ========== training start ==========")
     # set training data 
     train_dataset = tf.keras.preprocessing.image_dataset_from_directory(
         data_dir,
@@ -68,11 +68,7 @@ def trainingProcess(kdPengujian):
     model.summary()
     # start iteration 
     epochs = 10
-    history = model.fit(
-        train_dataset,
-        validation_data=val_dataset,
-        epochs=epochs
-    )
+    history = model.fit(train_dataset,validation_data=val_dataset,epochs=epochs)
     # create plot eval
     acc = history.history['accuracy']
     val_acc = history.history['val_accuracy']
@@ -123,11 +119,7 @@ def trainingProcess(kdPengujian):
     # epoech sequental 2
     model.summary()
     epochs = 15
-    history = model.fit(
-        train_dataset,
-        validation_data=val_dataset,
-        epochs=epochs
-    )
+    history = model.fit(train_dataset,validation_data=val_dataset,epochs=epochs)
     # accuracy evaluasi
     acc = history.history['accuracy']
     val_acc = history.history['val_accuracy']
@@ -151,7 +143,7 @@ def trainingProcess(kdPengujian):
     if not os.path.exists(data_model):
         os.makedirs(data_model)
     model.save(data_model, overwrite=True)
-    print("Done, model save to /model")
+    print("model berhasil di simpan")
 
-    print("training sucess")
+    print(" ========== training finish ==========")
     return 0
