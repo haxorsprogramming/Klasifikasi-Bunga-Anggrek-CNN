@@ -13,6 +13,8 @@ import cekDataset as cd
 import systemTraining as st
 import systemTesting as uji
 
+BASE_DIR = os.getenv("BASE_DIR")
+
 UPLOAD_FOLDER = 'data_upload'
 BASE_URL = os.getenv('SERVER_URL')
 
@@ -69,18 +71,20 @@ def prosesKlasifikasi():
     dataGambar = request.form.get("gambar")
     format, imgstr = dataGambar.split(";base64,")
     decoded_img = base64.b64decode((imgstr))
-    img_file = open('static/upload_data_uji/'+str(kdPengujian)+'.png', 'wb')
+    img_file = open(str(BASE_DIR)+'/static/upload_data_uji/'+str(kdPengujian)+'.png', 'wb')
     img_file.write(decoded_img)
     img_file.close()
 
     hasilKlasifikaasi = uji.testingDataUji(anggrek_class, kdPengujian)
 
-    # kelas = 
-
     dr = {'status' : 'success', 'hasil' : hasilKlasifikaasi}
     
     return jsonify(dr)
 
+@app.route('/tentang-project')
+def tentangProject():
+    return render_template('tentang-project.html', mData=BASE_URL)
+
 # jalankan server 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=6001)

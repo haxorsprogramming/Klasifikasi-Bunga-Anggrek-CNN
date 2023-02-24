@@ -7,11 +7,13 @@ import os
 import pathlib
 import tensorflow as tf
 import matplotlib.pyplot as plt
+import matplotlib
 
-
+matplotlib.use('agg')
+BASE_DIR = os.getenv("BASE_DIR")
 # section untuk training data 
-data_model = "static/model"
-dataset_dir = "static/dataset"
+data_model = str(BASE_DIR)+"/static/model"
+dataset_dir = str(BASE_DIR)+"/static/dataset"
 data_dir = pathlib.Path(dataset_dir)
 
 batch_size = 32
@@ -87,7 +89,7 @@ def trainingProcess(kdPengujian):
     plt.plot(epochs_range, val_loss, label='Validation Loss')
     plt.legend(loc='upper right')
     plt.title('Training and Validation Loss')
-    plt.savefig('static/file_plot/train_eval/'+str(kdPengujian)+'.png')
+    plt.savefig(str(BASE_DIR)+'/static/file_plot/train_eval/'+str(kdPengujian)+'.png')
     # data augmentation
     data_augmentation = keras.Sequential(
         [
@@ -138,7 +140,7 @@ def trainingProcess(kdPengujian):
     plt.plot(epochs_range, val_loss, label='Validation Loss')
     plt.legend(loc='upper right')
     plt.title('Training and Validation Loss')
-    plt.savefig('static/file_plot/acc_evaluasi/'+str(kdPengujian)+'.png')
+    plt.savefig(str(BASE_DIR)+'/static/file_plot/acc_evaluasi/'+str(kdPengujian)+'.png')
     # save model 
     if not os.path.exists(data_model):
         os.makedirs(data_model)

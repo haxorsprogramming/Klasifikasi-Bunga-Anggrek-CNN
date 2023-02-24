@@ -18,11 +18,8 @@
     
   </head>
   <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #3498db;">
             <div class="container-fluid">
-              <a class="navbar-brand" href="javascript:void(0)">
-                <img src="https://nos.jkt-1.neo.id/aditiastorage/asset/logo/uinsu.png" alt="" width="60" height="60" class="d-inline-block align-text-top">
-              </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -32,21 +29,22 @@
                   <a class="nav-link" href="{{ BASE_URL }}/dataset">Dataset Bunga</a>
                   <a class="nav-link" href="{{ BASE_URL }}/training-data">Training Data</a>
                   <a class="nav-link" href="{{ BASE_URL }}/klasifikasi">Proses Klasifikasi</a>
+                    <a class="nav-link" href="{{ BASE_URL }}/tentang-project">Tentang Project</a>
                 </div>
               </div>
             </div>
-          </nav>
+        </nav>
     
       {% block contents %}
 
       {% endblock contents %}
 
-        <footer style="margin-top: 50px;">
-          <div style="text-align: center;">
-            <p>Oleh Nurhalimah Panjaitan<br/>
-                Program Studi Ilmu Komputer - Fakultas Sains dan Teknologi<br/>
-                 Universitas Islam Negeri Sumatera Utara - Medan</p>
-          </div>
+        <footer style="margin-top: 70px;">
+            <div style="text-align: center">
+                <p>Data science project By <a href="https://almira-tech.com">Almira Tech</a><br/>
+                <small>Bantu support kami di <a href="{{ BASE_URL }}/tentang-project">sini</a></small>
+                </p>
+            </div>
         </footer>
   <script>
     function pesanUmumApp(icon, title, text)
