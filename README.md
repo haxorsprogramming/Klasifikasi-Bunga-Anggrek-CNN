@@ -4,10 +4,13 @@
 
 <div align="center">
   
+  
+  ## Klasifikasi Bunga Anggrek CNN
+
   <code>Developer : Aditia Darma Nasution </code>
   <code>Email : alditha.forum@gmail.com </code>
-  ## Klasifikasi Bunga Anggrek CNN
-  
+
+</div>
 
 ## Stack yang digunakan
 
