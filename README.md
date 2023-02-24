@@ -11,6 +11,16 @@
 </div>
 
 <div>
-<p>
-</p>
+
+
+## Screenshoot Aplikasi
+
+- Homepage
+![enter image description here](https://nos.jkt-1.neo.id/aditiastorage/asset/screenshoot/PRAL8901/homepage.png)
+
+- Dataset List
+
+- Training Data 
+
+
 </div>
