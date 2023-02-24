@@ -8,15 +8,18 @@
   <code>Email : alditha.forum@gmail.com </code>
   ## Klasifikasi Bunga Anggrek CNN
   
-</div>
 
-<div>
+## Stack yang digunakan
 
+- Python
+- Flask (Web Framework)
+- Tensorflow (Machine Learning Framework)
+- Matplotlib (Data Plotting Framework)
 
 ## Screenshoot Aplikasi
 
 - Homepage
-![enter image description here](https://nos.jkt-1.neo.id/aditiastorage/asset/screenshoot/PRAL8901/homepage.png)
+<img src="https://nos.jkt-1.neo.id/aditiastorage/asset/screenshoot/PRAL8901/homepage.png">
 
 - Dataset List
 
