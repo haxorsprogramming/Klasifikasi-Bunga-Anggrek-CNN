@@ -69,6 +69,7 @@
                 pesanUmumApp("success", "Success", "Proses klasifikasi selesai ... !!!");
                 let hasil = data.hasil;
                 let confidence = hasil['confidence'];
+                //let fConfidence = confidence.
                 let kelas = hasil['class'];
                 $("#divFormUji").hide();
                 document.querySelector("#capHasilPrediksiJenisBunga").innerHTML = kelas;

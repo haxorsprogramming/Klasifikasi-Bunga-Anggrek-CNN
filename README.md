@@ -46,4 +46,4 @@
 - Install semua module yang diperlukan di file requirements.txt<br/>
 - Aplikasi ini tidak support database, jadi dataset harus dimasukkan secara manual<br/>
 - Harap gunakan aplikasi ini untuk tujuan akademik, bukan komersial<br/>
-- Jika ada pertanyaan seputar project ini, dapat bertanya di email : <code> alditha.forum@gmail.com </code>
+- Jika ada pertanyaan seputar project ini, dapat bertanya di email : <code>alditha.forum@gmail.com</code>
