@@ -8,7 +8,6 @@
   ## Klasifikasi Bunga Anggrek CNN
 
   <code>Developer : Aditia Darma Nasution </code>
-  <code>Email : alditha.forum@gmail.com </code>
 
 </div>
 
@@ -46,4 +45,10 @@
 
 - Ubah nilai "BASE_DIR" pada file .env, sesuaikan dengan letak folder aplikasi di perangkat anda
 
+- Install semua module yang diperlukan di file requirements.txt
+
+- Aplikasi ini tidak support database, jadi dataset harus dimasukkan secara manual
+
 - Harap gunakan aplikasi ini untuk tujuan akademik, bukan komersial
+
+- Jika ada pertanyaan seputar project ini, dapat bertanya di email :  <code>Email : alditha.forum@gmail.com </code>

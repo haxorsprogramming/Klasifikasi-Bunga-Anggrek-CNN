@@ -1,0 +1,6 @@
+flask
+matplotlib
+numpy
+pandas
+dotenv
+tensorflow
