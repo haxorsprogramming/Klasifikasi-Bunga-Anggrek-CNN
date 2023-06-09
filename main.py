@@ -4,7 +4,6 @@ from operasiFile import hitungTotalFile
 
 import pandas as pd
 import numpy as np
-
 import os
 import uuid
 import base64
@@ -15,8 +14,8 @@ import systemTesting as uji
 
 BASE_DIR = os.getenv("BASE_DIR")
 
-UPLOAD_FOLDER = 'data_upload'
-BASE_URL = os.getenv('SERVER_URL')
+UPLOAD_FOLDER = "data_upload"
+BASE_URL = os.getenv("SERVER_URL")
 
 anggrek_class = ["Dendrobium_Dindii", "Dendrobium_Startiotes", "Dendrobium_Taurinum"]
 
@@ -24,15 +23,15 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # route index
-@app.route('/')
+@app.route("/")
 def index():
-    return render_template('home.html', dr=BASE_URL)
+    return render_template("home.html", dr=BASE_URL)
 
 # route dataset 
-@app.route('/dataset')
+@app.route("/dataset")
 def dataset():
     dataset = cd.getInformasiDataset()
-    return render_template('dataset.html', mData=BASE_URL, fileDindii=dataset['dataBunga'])
+    return render_template("dataset.html", mData=BASE_URL, fileDindii=dataset['dataBunga'])
 
 # route cara tambahkan dataset 
 @app.route('/cara-tambahkan-dataset')
