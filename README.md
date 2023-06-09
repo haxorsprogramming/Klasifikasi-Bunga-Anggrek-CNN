@@ -4,14 +4,13 @@
 
 <div align="center">
   
-  
   ## Klasifikasi Bunga Anggrek CNN
 
   <code>Developer : Aditia Darma Nasution </code>
 
 </div>
 
-## Stack yang digunakan
+### Stack yang digunakan
 
 - Python
 - Flask (Web Framework)
@@ -19,7 +18,7 @@
 - Matplotlib (Data Plotting Framework)
 
 
-## Screenshoot Aplikasi
+### Screenshoot Aplikasi
 
 - Homepage
 <img src="https://nos.jkt-1.neo.id/aditiastorage/asset/screenshoot/PRAL8901/homepage.png">
@@ -41,14 +40,10 @@
 
 </div>
 
-## Catatan
+### Catatan
 
-- Ubah nilai "BASE_DIR" pada file .env, sesuaikan dengan letak folder aplikasi di perangkat anda
-
-- Install semua module yang diperlukan di file requirements.txt
-
-- Aplikasi ini tidak support database, jadi dataset harus dimasukkan secara manual
-
-- Harap gunakan aplikasi ini untuk tujuan akademik, bukan komersial
-
-- Jika ada pertanyaan seputar project ini, dapat bertanya di email :  <code>Email : alditha.forum@gmail.com </code>
+- Ubah nilai "BASE_DIR" pada file .env, sesuaikan dengan letak folder aplikasi di perangkat anda<br/>
+- Install semua module yang diperlukan di file requirements.txt<br/>
+- Aplikasi ini tidak support database, jadi dataset harus dimasukkan secara manual<br/>
+- Harap gunakan aplikasi ini untuk tujuan akademik, bukan komersial<br/>
+- Jika ada pertanyaan seputar project ini, dapat bertanya di email : <code> alditha.forum@gmail.com </code>
