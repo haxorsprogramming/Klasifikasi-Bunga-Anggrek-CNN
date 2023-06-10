@@ -34,8 +34,8 @@
     $("#divFormHasil").hide();
 
     function setImg(){
-        var citraInput = document.querySelector('#txtFileFoto');
-        var preview = document.querySelector('#filePicPrev');
+        var citraInput = document.querySelector("#txtFileFoto");
+        var preview = document.querySelector("#filePicPrev");
         var fileGambar = new FileReader();
         fileGambar.readAsDataURL(citraInput.files[0]);
         fileGambar.onload = function(e){
@@ -58,10 +58,9 @@
     }
 
     function klasifikasiConfirm()
-    {
-        
+    {   
         let gambar = document.getElementById("filePicPrev").getAttribute("src");
-        let ds = {'gambar':gambar}
+        let ds = {"gambar":gambar}
         document.querySelector("#divFormUji").innerHTML = "<h4>Memproses data uji untuk klasifikasi ... </h4>";
         $("#btnProsesKlasifikasi").hide();
         setTimeout(function(){
